@@ -27,8 +27,7 @@ show good results and highlight the promise of the proposed model.
 Let $X_1, \cdots, X_n$ represents a random sample consisting of $n$ $p$-variate observations distributed according to a finite mixture model with pdf of the form,
 
 ```math
-g(x; \Theta) = \sum_{k=1}^K \pi_k h(x; \vartheta_k).
-\label{eq.mixture}
+g(x; \Theta) = \sum \pi_k h(x; \vartheta_k).
 ```
-In this expression, $K$ represents the number of components $h(x;\vartheta_k)$ in the mixture, $\bvartheta_k$ stands for the component-specific parameter vector, and $\pi_k$ is the $k^{th}$ mixing proportion, subject to restrictions $\sum_{k=1}^K \pi_k = 1$ and $0 < \pi_k \le 1$. 
+In this expression, $K$ represents the number of components $h(x;\vartheta_k)$ in the mixture, $\vartheta_k$ stands for the component-specific parameter vector, and $\pi_k$ is the $k^{th}$ mixing proportion, subject to restrictions $\sum_{k=1}^K \pi_k = 1$ and $0 < \pi_k \le 1$. 
 Popular choices of the component $h(x; vartheta_k)$ include multivariate Gaussian, $t$, skew-normal, and skew-$t$. All these distributions include a covariance matrix with a potentially large number of parameters. As discussed, potential overparameterization is one of the major concerns in the mixture modeling framework. It can lead to model overfitting and, as a result, mixture order underestimation. Traditional parsimonious models aim at reducing the number of model parameters by considering specific structures of covariance matrices. 
