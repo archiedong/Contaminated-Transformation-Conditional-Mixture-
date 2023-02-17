@@ -54,4 +54,4 @@ Assuming all membership labels $Z_i$, $i = 1, \ldots, n$ are known, i.e. the com
 ```math
 L(\Psi) = \prod_{i = 1}^n \prod_{k = 1}^K \prod_{w = 1}^2 [ \pi_k [ \delta_{kw} \phi ( \mathcal{T} ( x_i; \lambda_{ jk } ); \mu_k, \Sigma_{kw} ) J_{ \mathcal{T} } ( x_i; \lambda_{ jk } ) ]^{ I(W_i = w) }]^{I(Z_i = k) },
 ```
-where $I(Z_i = k) = 1$ if $Z_i$ belongs to the $k$th component and 0 otherwise; similarly $I(W_i = w)$ indicates if the $i$th observation from the $k$th component is contaminated. At the E-step of the algorithm, the conditional expectation of the complete-data log-likelihood function obtained from Eq requires updating posterior probabilities according to the following expressions:
+where $I(Z_i = k) = 1$ if $Z_i$ belongs to the $k$th component and 0 otherwise; similarly $I(W_i = w)$ indicates if the ith observation from the kth component is contaminated. At the E-step of the algorithm, the conditional expectation of the complete-data log-likelihood function obtained from Eq requires updating posterior probabilities according to the following expressions:
