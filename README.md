@@ -55,3 +55,13 @@ Assuming all membership labels $Z_i$, $i = 1, \ldots, n$ are known, i.e. the com
 L(\Psi) = \prod_{i = 1}^n \prod_{k = 1}^K \prod_{w = 1}^2 [ \pi_k [ \delta_{kw} \phi ( \mathcal{T} ( x_i; \lambda_{ jk } ); \mu_k, \Sigma_{kw} ) J_{ \mathcal{T} } ( x_i; \lambda_{ jk } ) ]^{ I(W_i = w) }]^{I(Z_i = k) },
 ```
 where $I(Z_i = k) = 1$ if $Z_i$ belongs to the $k$th component and 0 otherwise; similarly $I(W_i = w)$ indicates if the ith observation from the kth component is contaminated. At the E-step of the algorithm, the conditional expectation of the complete-data log-likelihood function obtained from Eq requires updating posterior probabilities according to the following expressions:
+
+```math
+\ddot{\tau}_{ik} = \frac{\dot{\pi}_k [\dot{\delta}_k \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk}); \{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\sigma}_{jk}^2) + (1 - \dot{\delta}_k) \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\alpha}_k \dot{\sigma}_{jk}^2)]  \prod_{j = 1}^p J_{\mathcal{T}}(x_{ij};\lambda_{jk})} {\sum_{r=1}^K \dot{\pi}_k [\dot{\delta}_r \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jr});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jr}, \dot{\sigma}_{jr}^2) + (1 - \dot{\delta}_r) \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jr});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jr}, \dot{\alpha}_r \dot{\sigma}_{jr}^2)]  \prod_{j = 1}^p J_{\mathcal{T}}(x_{ij};\lambda_{jr})}
+```
+and
+
+```math
+\ddot{\nu}_{i|k} = \frac{\dot{\delta}_k \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\sigma}_{jk}^2)} { \dot{\delta}_k \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\sigma}_{jk}^2) + (1 - \dot{\delta}_k) \prod_{j=1}^p \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\alpha}_k \dot{\sigma}_{jk}^2)},
+```
+where $\tau_{ik}$ is the probability that $x_i$ originates from the $k^{th}$ mixture component and $\nu_{i|k}$ is the probability that $x_i$ belongs to the primary distribution within the $k^{th}$ component. In other words, $\nu_{i|k}$ is the probability that $x_i$ is not contanimated in the $k^{th}$ component. One dot and two dots on the top of parameters stand for estimates at the previous and current iterations, respectively. Therefore, the Q function, takes the following form:
