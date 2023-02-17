@@ -70,7 +70,7 @@ In the M-step, taking partial derivatives of this Q-function with respect to $\p
 ```math
 \ddot{\pi}_k = \frac{\sum_{i = 1} ^ n \ddot{\tau}_{ik}}{n} \text{ and } \ddot{\delta_k} = \frac{\sum_{i=1}^n \ddot{\tau_{ik}} \ddot{\nu}_{i|k}}{\sum_{i = 1} ^ n \ddot{\tau}_{ik}}.
 ```
-The $\ddot{\pi}_{k}$ and $\ddot{\delta}_{k}$ can be obtained from the MLE of posterior probabilities $\ddot{\pi}_{k} \equiv \pi_{ik}(\dot{\Psi})$ according to the Bayes decision rule: $\ddot{Z}_i$  =  argmax$_k$ $\dot{\pi}_{k}$. The other parameters except for $\lambda$ all have closed forms that improve the efficacy of the EM algorithm, and they can be derived by
+The $\ddot{\pi}_{k}$ and $\ddot{\delta}_{k}$ can be obtained from the MLE of posterior probabilities $\ddot{\pi}_{k} \equiv \pi_{ik}(\dot{\Psi})$ according to the Bayes decision rule: $\ddot{Z}_i$  =  argmax$z_k$ $\dot{\pi}_{k}$. The other parameters except for $\lambda$ all have closed forms that improve the efficacy of the EM algorithm, and they can be derived by
 
 ```math
 \ddot{\beta}_{jk} = \left(\sum \ddot{\tau}_{ir} \left( 1 + \ddot{\nu}_{i|r} (\dot{\alpha}_r - 1) \right)  \tilde{x}_{ij}^m  \{\tilde{x}_{ij}^m\}^\top \right)^{-1} {\sum \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1)\right) \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) \tilde{x}_{ij}^m}
