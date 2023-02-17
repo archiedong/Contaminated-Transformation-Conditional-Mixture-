@@ -39,7 +39,7 @@ g(x; \Theta) = \sum_{k=1} ^{K} \pi_k \prod_{j=1}^p \phi(x_j;\tilde{x}_j^\top \be
 ```
 The estimation of the parameter vector $\Theta = {\pi_1, \cdots, \pi_{K-1}, \vartheta_1, \cdots, \vartheta_K}$ is traditionally performed by means of the the expectation-maximization (EM) algorithm. At the E-step, the conditional expected value of the complete-data log-likelihood function is estimated. This expectation is traditionally referred to as the $Q$ function. At the M step, the $Q$ function is maximized with respect to $\Theta$. The procedure stops when some pre-specified convergence criterion is met, yielding the maximum likelihood estimate $\hat{\Theta}$ and estimated posterior probabilities $\hat{\tau}_{ik}$ for $i = 1, \cdots, n, k = 1, \cdots, K$. Often times the mixture order $K$ is unknown and also required to be assessed; consequently a common approach of choosing an appropriate $K$ is based on minimizing the Bayesian information criterion (BIC) over different mixture orders.
 
-With the Yeo and Johnson transformation in Equation~\ref{eq:Yeo}), the joint density function in Equation~\ref{eq:density} becomes 
+With the Yeo and Johnson transformation in Equation~\ref{eq:Yeo}), the joint density function in Equation becomes 
 ```math
 \begin{split}
 f(x;\theta)  =& [\delta \phi(\mathcal{T}(x; \lambda);\mu, \Sigma) + (1 - \delta) \phi(\mathcal{T}(x; \lambda);\mu, \alpha \Sigma)]  J_{\mathcal{T}}(x;\lambda) \\ 
