@@ -73,15 +73,15 @@ In the M-step, taking partial derivatives of this Q-function with respect to $\p
 The $\ddot{\pi}_{k}$ and $\ddot{\delta}_{k}$ can be obtained from the MLE of posterior probabilities $\ddot{\pi}_{k} \equiv \pi_{ik}(\dot{\Psi})$ according to the Bayes decision rule: $\ddot{Z}_i$  =  argmax$_k$ $\dot{\pi}_{k}$. The other parameters except for $\lambda$ all have closed forms that improve the efficacy of the EM algorithm, and they can be derived by
 
 ```math
-\ddot{\beta}_{jk} = \left(\sum_{i=1}^n \ddot{\tau}_{ir} \left( 1 + \ddot{\nu}_{i|r} (\dot{\alpha}_r - 1) \right)  \tilde{x}_{ij}^m  \{\tilde{x}_{ij}^m\}^\top \right)^{-1} {\sum_{i=1}^n \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1)\right) \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) \tilde{x}_{ij}^m}
+\ddot{\beta}_{jk} = \left(\sum \ddot{\tau}_{ir} \left( 1 + \ddot{\nu}_{i|r} (\dot{\alpha}_r - 1) \right)  \tilde{x}_{ij}^m  \{\tilde{x}_{ij}^m\}^\top \right)^{-1} {\sum \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1)\right) \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) \tilde{x}_{ij}^m}
 ```
 
 ```math
-\ddot{\sigma}_{jk}^2 = \frac{\sum_{i=1}^n \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1) \right) \left( \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) - \{\tilde{x}_{ij}^m\}^\top \ddot{\beta}_{jk} \right)^2}{\sum_{i=1}^n \ddot{\tau}_{ik} \dot{\alpha}_k}
+\ddot{\sigma}_{jk}^2 = \frac{\sum \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1) \right) \left( \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) - \{\tilde{x}_{ij}^m\}^\top \ddot{\beta}_{jk} \right)^2}{\sum \ddot{\tau}_{ik} \dot{\alpha}_k}
 ```
 and
 
 ```math
-\ddot{\alpha}_k = \frac{\sum_{i=1}^n \sum_{j=1}^p \ddot{\tau}_{ik} ( 1 - \ddot{\nu}_{i|k}) \ddot{\sigma}_{jk}^{-2} \left( \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) - \{\tilde{x}_{ij}^m\}^\top \ddot{\beta}_{jk} \right)^2}{p \sum_{i=1}^n \ddot{\tau}_{ik} ( 1- \ddot{\nu}_{i|k})}
+\ddot{\alpha}_k = \frac{\sum \sum \ddot{\tau}_{ik} ( 1 - \ddot{\nu}_{i|k}) \ddot{\sigma}_{jk}^{-2} \left( \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) - \{\tilde{x}_{ij}^m\}^\top \ddot{\beta}_{jk} \right)^2}{p \sum \ddot{\tau}_{ik} ( 1- \ddot{\nu}_{i|k})}
 ```
 The $\lambda$'s can be obtained numerically by a variety of optimization procedures. The EM algorithm continues until the convergence criterion is met. In this paper, we employed a stopping criterion based on the relative change of log-likelihood values from two consecutive iterations of the EM algorithm.
