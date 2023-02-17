@@ -64,4 +64,24 @@ and
 ```math
 \ddot{\nu}_{i|k} = \frac{\dot{\delta}_k \prod \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\sigma}_{jk}^2)} { \dot{\delta}_k \prod \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\sigma}_{jk}^2) + (1 - \dot{\delta}_k) \prod \phi(\mathcal{T}(x_{ij}; \dot{\lambda}_{jk});\{\tilde{x}_{ij}^m\}^\top \dot{\beta}_{jk}, \dot{\alpha}_k \dot{\sigma}_{jk}^2)},
 ```
-where $\tau_{ik}$ is the probability that $x_i$ originates from the $k^{th}$ mixture component and $\nu_{i|k}$ is the probability that $x_i$ belongs to the primary distribution within the $k^{th}$ component. In other words, $\nu_{i|k}$ is the probability that $x_i$ is not contanimated in the $k^{th}$ component. One dot and two dots on the top of parameters stand for estimates at the previous and current iterations, respectively. Therefore, the Q function, takes the following form:
+where $\tau_{ik}$ is the probability that $x_i$ originates from the $k^{th}$ mixture component and $\nu_{i|k}$ is the probability that $x_i$ belongs to the primary distribution within the $k^{th}$ component. In other words, $\nu_{i|k}$ is the probability that $x_i$ is not contanimated in the $k^{th}$ component. One dot and two dots on the top of parameters stand for estimates at the previous and current iterations, respectively. 
+In the M-step, taking partial derivatives of this Q-function with respect to $\pi_k$ and $\delta_k$ leads to the following expressions
+
+```math
+\ddot{\pi}_k = \frac{\sum_{i = 1} ^ n \ddot{\tau}_{ik}}{n} \text{ and } \ddot{\delta_k} = \frac{\sum_{i=1}^n \ddot{\tau_{ik}} \ddot{\nu}_{i|k}}{\sum_{i = 1} ^ n \ddot{\tau}_{ik}}.
+```
+The $\ddot{\pi}_{k}$ and $\ddot{\delta}_{k}$ can be obtained from the MLE of posterior probabilities $\ddot{\pi}_{k} \equiv \pi_{ik}(\dot{\Psi})$ according to the Bayes decision rule: $\ddot{Z}_i$  =  argmax$_k$ $\dot{\pi}_{k}$. The other parameters except for $\lambda$ all have closed forms that improve the efficacy of the EM algorithm, and they can be derived by
+
+```math
+\ddot{\beta}_{jk} = \left(\sum_{i=1}^n \ddot{\tau}_{ir} \left( 1 + \ddot{\nu}_{i|r} (\dot{\alpha}_r - 1) \right)  \tilde{x}_{ij}^m  \{\tilde{x}_{ij}^m\}^\top \right)^{-1} {\sum_{i=1}^n \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1)\right) \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) \tilde{x}_{ij}^m}
+```
+
+```math
+\ddot{\sigma}_{jk}^2 = \frac{\sum_{i=1}^n \ddot{\tau}_{ik} \left(1 + \ddot{\nu}_{i|k} (\dot{\alpha}_k - 1) \right) \left( \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) - \{\tilde{x}_{ij}^m\}^\top \ddot{\beta}_{jk} \right)^2}{\sum_{i=1}^n \ddot{\tau}_{ik} \dot{\alpha}_k}
+```
+and
+
+```math
+\ddot{\alpha}_k = \frac{\sum_{i=1}^n \sum_{j=1}^p \ddot{\tau}_{ik} ( 1 - \ddot{\nu}_{i|k}) \ddot{\sigma}_{jk}^{-2} \left( \mathcal{T}(x_{ij}; \ddot{\lambda}_{jk}) - \{\tilde{x}_{ij}^m\}^\top \ddot{\beta}_{jk} \right)^2}{p \sum_{i=1}^n \ddot{\tau}_{ik} ( 1- \ddot{\nu}_{i|k})}
+```
+The $\lambda$'s can be obtained numerically by a variety of optimization procedures. The EM algorithm continues until the convergence criterion is met. In this paper, we employed a stopping criterion based on the relative change of log-likelihood values from two consecutive iterations of the EM algorithm.
