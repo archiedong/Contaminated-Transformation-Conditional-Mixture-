@@ -41,7 +41,6 @@ The estimation of the parameter vector $\Theta = {\pi_1, \cdots, \pi_{K-1}, \var
 
 With the Yeo and Johnson transformation in Equation~\ref{eq:Yeo}), the joint density function in Equation~\ref{eq:density} becomes 
 ```math
-\mbox{\fontsize{10}{10}\selectfont\(
 \begin{split}
 f(x;\theta)  =& [\delta \phi(\mathcal{T}(x; \lambda);\mu, \Sigma) + (1 - \delta) \phi(\mathcal{T}(x; \lambda);\mu, \alpha \Sigma)]  J_{\mathcal{T}}(x;\lambda) \\ 
 & = [\delta \prod_{j=1}^p \phi(\mathcal{T}(x_{j}; \lambda_j);\{\hat{x}_{j}^m\}^\top \beta_{j}, \sigma^2_j) + (1 - \delta) \prod_{j=1}^p \phi(\mathcal{T}(x_{j}; \lambda_j);\{\hat{x}_{j}^m\}^\top \beta_{j}, \alpha \sigma^2_j)] \prod_{j = 1}^P J_{\mathcal{T}}(x_j;\lambda_j) \\ 
@@ -49,5 +48,4 @@ f(x;\theta)  =& [\delta \phi(\mathcal{T}(x; \lambda);\mu, \Sigma) + (1 - \delta)
 &+ (1 - \delta) \phi_1 (\mathcal{T}(x_1; \lambda_1); \{\hat{x}_1^m\}^\top \beta_1, \alpha \sigma_1^2) \cdots \phi_p(\mathcal{T}(x_p; \lambda_p); \{\hat{x}_p^m\}^\top \beta_p, \alpha \sigma_p^2)] 
 \prod_{j = 1}^P J_{\mathcal{T}}(x_j;\lambda_j),
 \end{split}
-\)}
 ```
